@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Level/level_game.gd" type="Script" id=1]
+[ext_resource path="res://Resources/bd/bd_quiz_game.tres" type="Resource" id=2]
+
+[node name="level_game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+script = ExtResource( 1 )
+bd_quiz = ExtResource( 2 )
+color_right = Color( 0.192157, 0.92549, 0.0627451, 1 )
+color_wrong = Color( 0.929412, 0.0627451, 0.0627451, 1 )
+
+[node name="question_info" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -513.5
+margin_right = 513.5
+margin_bottom = 95.0
+
+[node name="txt_question" type="Label" parent="question_info"]
+margin_top = 15.0
+margin_right = 1027.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 500, 0 )
+size_flags_vertical = 6
+
+[node name="Panel" type="Panel" parent="question_info"]
+margin_top = 49.0
+margin_right = 1027.0
+margin_bottom = 95.0
+size_flags_vertical = 3
+
+[node name="question_image" type="TextureRect" parent="question_info/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+stretch_mode = 6
+
+[node name="question_video" type="VideoPlayer" parent="question_info/Panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="question_audio" type="AudioStreamPlayer" parent="question_info/Panel"]
+
+[node name="question_holder" type="VBoxContainer" parent="."]
+margin_left = 6.0
+margin_top = 454.0
+margin_right = 1026.0
+margin_bottom = 594.0
+custom_constants/separation = 11
+
+[node name="button_option_1" type="Button" parent="question_holder"]
+margin_right = 1020.0
+margin_bottom = 26.0
+size_flags_vertical = 3
+
+[node name="button_option_2" type="Button" parent="question_holder"]
+margin_top = 37.0
+margin_right = 1020.0
+margin_bottom = 64.0
+size_flags_vertical = 3
+
+[node name="button_option_3" type="Button" parent="question_holder"]
+margin_top = 75.0
+margin_right = 1020.0
+margin_bottom = 102.0
+size_flags_vertical = 3
+
+[node name="button_option_4" type="Button" parent="question_holder"]
+margin_top = 113.0
+margin_right = 1020.0
+margin_bottom = 140.0
+size_flags_vertical = 3
+
+[node name="game_over" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="txt_info" type="Label" parent="game_over"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -179.0
+margin_top = 25.0
+margin_right = 175.0
+margin_bottom = 102.0
+text = "Você Acertou"
+align = 1
+valign = 1
+
+[node name="txt_result" type="Label" parent="game_over"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -187.5
+margin_top = -75.5
+margin_right = 187.5
+margin_bottom = 75.5
+text = "0/0"
+align = 1
+valign = 1
+
+[node name="button_restart" type="Button" parent="game_over"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -138.0
+margin_right = 150.0
+margin_bottom = -38.0
+text = "Jogar Novamente"
+
+[connection signal="pressed" from="game_over/button_restart" to="." method="_on_button_restart_pressed"]
